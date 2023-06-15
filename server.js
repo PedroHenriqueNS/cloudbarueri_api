@@ -9,7 +9,7 @@ const routes = require('./routes/routes');
 const server = express();
 
 mongoose.set('strictQuery', false);
-mongoose.connect("mongodb+srv://pedrohe:BcBwnzvr2Nqv97qL@cluster0.dgxjq4s.mongodb.net/?retryWrites=true&w=majority", {
+mongoose.connect(`mongodb+srv://${process.env.USER_AND_CLUSTER}/?retryWrites=true&w=majority`, {
     useNewUrlParser: true, useUnifiedTopology: true, enableUtf8Validation: false 
 })
     .then(() => console.log("Banco de dados conectado com sucesso!"))
