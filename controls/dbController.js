@@ -72,6 +72,13 @@ var updateFilefn = async (req, res) => {
         let result = await dbService.updateFile(req.params.id, req.body);
 
         if (result) {
+            let folderResult = await dbService.getFolders();
+            if (folderResult) {
+                for (let i = 0; i < folderResult.length; i++) {
+                    await dbService.updateFolder(folderResult[i]._id, folderResult[i])
+                }
+            }
+
             res.send({ "status": true, "message": "Arquivo atualizado com sucesso!", "result": result })
         } else {
             res.send({ "status": false, "message": "Houve uma falha ao atualizar um arquivo.", "result": result })

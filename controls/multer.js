@@ -10,7 +10,7 @@ module.exports = {
             // cb(null, './public/general')
         },
         filename: (req, file, cb) => {
-                const fileName = `${Date.now()}_${file.originalname}`
+                const fileName = `${Date.now()}_${Buffer.from(file.originalname, 'latin1').toString('utf8')}`
                 cb(null, fileName)
         }
     })

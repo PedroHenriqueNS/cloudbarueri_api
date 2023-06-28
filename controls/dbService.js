@@ -101,7 +101,10 @@ module.exports.updateFile = (id, file) => {
 
     return new Promise(function checkURL(resolve, reject) {
 
-        fileModel.findByIdAndUpdate(id, file)
+        var newFile = file
+        newFile.modifiedAt = new Date
+
+        fileModel.findByIdAndUpdate(id, newFile)
             .then((res) => {
                 resolve(true);
             })
@@ -113,6 +116,9 @@ module.exports.updateFile = (id, file) => {
 module.exports.updateFolder = (id, folder) => {
 
     return new Promise(function checkURL(resolve, reject) {
+
+        var newFolder = folder
+        newFolder.modifiedAt = new Date
 
         folderModel.findByIdAndUpdate(id, folder)
             .then((res) => {

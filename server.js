@@ -33,5 +33,5 @@ server.use(routes);
 
 server.listen(3000, () => {
     var ip = require("ip");
-    console.log("Servidor HTTPS criado com sucesso! Endereço:\n" + ip.address('public') + ":" + 3000);
+    console.log("Servidor criado com sucesso! Endereço:\n" + ip.address('public') + ":" + 3000);
 });
